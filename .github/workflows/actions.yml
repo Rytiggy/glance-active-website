@@ -25,7 +25,7 @@ jobs:
       - name: Build
         run: npm run build
       - name: Deploy
-        uses: rytiggy/glance-active-website@master
+        uses: JamesIves/github-pages-deploy-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BASE_BRANCH: master
