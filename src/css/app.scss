@@ -1,0 +1,47 @@
+body {
+  background: #151719;
+  color: #fff;
+}
+.max-page-width {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.list-item {
+  border-radius: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  box-shadow: 0 1px 8px rgb(0 0 0 / 20%), 0 3px 4px rgb(0 0 0 / 14%),
+    0 3px 3px -2px rgb(0 0 0 / 12%);
+  background: #242424;
+  color: white;
+  border: 1px solid #303030;
+}
+
+// Headers
+.text-h1 {
+  font-size: 3.5rem;
+  font-weight: 600;
+  // letter-spacing: 7px;
+  // margin-bottom: 1rem;
+}
+
+.text-h5 {
+  font-weight: 600;
+}
+
+.subtitle {
+  font-weight: 375;
+  color: #9ba9b3;
+  font-size: 20px;
+  font-family: "Inter", sans-serif;
+  letter-spacing: -0.1px;
+}
+
+.subtitle-2 {
+  font-weight: 375;
+  color: #9ba9b3;
+  font-size: 18px;
+  font-family: "Inter", sans-serif;
+  letter-spacing: -0.1px;
+}
