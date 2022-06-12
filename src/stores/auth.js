@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import { api } from "boot/axios";
 import { LocalStorage } from "quasar";
+import { Notify } from "quasar";
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBdaaBnmWvXqWKcFXMerp_LiM8NIa0j_lA",
@@ -47,6 +48,35 @@ export const useAuthStore = defineStore("account", {
         })
         .catch((error) => {
           console.log(error);
+          Notify.create({
+            type: "warning",
+            position: "top",
+            message: error.response.data.error.message,
+          });
+        });
+    },
+
+    register(email, password) {
+      let body = {
+        email: email,
+        password: password,
+        returnSecureToken: true,
+      };
+      api
+        .post(`${AUTH_API}:signUp?key=${firebaseConfig.apiKey}`, body)
+        .then((response) => {
+          LocalStorage.set("refresh-token", response.data.refreshToken);
+          this.getAccessToken()
+            .then((token) => console.log(token))
+            .catch((err) => console.log(err));
+        })
+        .catch((error) => {
+          console.log(error);
+          Notify.create({
+            type: "warning",
+            position: "top",
+            message: error.response.data.error.message,
+          });
         });
     },
 

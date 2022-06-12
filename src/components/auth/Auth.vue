@@ -1,7 +1,8 @@
 <template>
   <q-page class="max-page-width" padding>
-    <div>
-      Auth
+    <Register v-if="showRegisterView" />
+    <div v-else>
+      <div class="text-h5 q-pb-md">Login</div>
       <q-form @submit="login" class="q-gutter-md">
         <q-input
           :dark="true"
@@ -33,12 +34,24 @@
 <script>
 import { defineComponent } from "vue";
 import { useAuthStore } from "src/stores/auth";
-import { ref } from "vue";
-
+import { ref, watch } from "vue";
+import { useRoute } from "vue-router";
+import Register from "./register.vue";
 export default defineComponent({
   name: "Auth-page",
-  props: {},
+  components: {
+    Register,
+  },
   setup() {
+    const route = useRoute();
+    const showRegisterView = ref(route.query.register);
+    if (!showRegisterView.value) {
+      showRegisterView.value = false;
+    }
+
+    watch(route, (selection, prevSelection) => {
+      showRegisterView.value = route.query.register;
+    });
     const store = useAuthStore();
     const email = ref(null);
     const password = ref(null);
@@ -47,6 +60,7 @@ export default defineComponent({
       email,
       password,
       store,
+      showRegisterView,
     };
   },
   methods: {

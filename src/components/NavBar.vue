@@ -38,6 +38,13 @@
           no-caps
           :to="{ name: 'home' }"
         />
+        <q-btn
+          class="subtitle-2"
+          flat
+          label="Sign Up"
+          no-caps
+          :to="{ name: 'home', query: { register: true } }"
+        />
       </span>
     </div>
   </q-toolbar>
