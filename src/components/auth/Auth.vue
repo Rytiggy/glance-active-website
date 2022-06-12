@@ -36,7 +36,8 @@ import { defineComponent } from "vue";
 import { useAuthStore } from "src/stores/auth";
 import { ref, watch } from "vue";
 import { useRoute } from "vue-router";
-import Register from "./register.vue";
+import Register from "./Register.vue";
+
 export default defineComponent({
   name: "Auth-page",
   components: {
